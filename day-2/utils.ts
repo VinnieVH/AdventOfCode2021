@@ -5,29 +5,7 @@ export const getPositionChangeObject = (positionChange: string): PositionChange 
   return { direction: result[0].trim() as Direction, distance: +result[1].trim() };
 };
 
-export const calculatePosition = (items: PositionChange[]): number => {
-  let horizontalPosition = 0;
-  let verticalPosition = 0;
-
-  items.forEach((x) => {
-    switch (x.direction) {
-      case Direction.Forward:
-        horizontalPosition += x.distance;
-        break;
-      case Direction.Up:
-        verticalPosition -= x.distance;
-        break;
-      case Direction.Down:
-        verticalPosition += x.distance;
-      default:
-        break;
-    }
-  });
-
-  return horizontalPosition * verticalPosition;
-};
-
-export const calculatePositionWithAim = (items: PositionChange[]): number => {
+export const calculatePosition = (items: PositionChange[], withAim?: boolean): number => {
   let horizontalPosition = 0;
   let verticalPosition = 0;
   let aim = 0;
@@ -36,13 +14,13 @@ export const calculatePositionWithAim = (items: PositionChange[]): number => {
     switch (x.direction) {
       case Direction.Forward:
         horizontalPosition += x.distance;
-        if (aim > 0) verticalPosition += aim * x.distance;
+        if (withAim && aim > 0) verticalPosition += aim * x.distance;
         break;
       case Direction.Up:
-        aim -= x.distance;
+        withAim ? (aim -= x.distance) : (verticalPosition -= x.distance);
         break;
       case Direction.Down:
-        aim += x.distance;
+        withAim ? (aim += x.distance) : (verticalPosition += x.distance);
       default:
         break;
     }

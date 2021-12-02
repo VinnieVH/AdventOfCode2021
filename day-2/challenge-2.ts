@@ -1,6 +1,6 @@
 import fs from "fs";
 import { PositionChange } from "./PositionChange";
-import { calculatePositionWithAim, getPositionChangeObject } from "./utils";
+import { calculatePosition, calculatePositionWithAim, getPositionChangeObject } from "./utils";
 
 const inputs: PositionChange[] = fs
   .readFileSync("./day-2/input.txt", "utf-8")
@@ -8,4 +8,4 @@ const inputs: PositionChange[] = fs
   .split("\n")
   .map((x) => getPositionChangeObject(x));
 
-console.log(calculatePositionWithAim(inputs));
+console.log(calculatePosition(inputs, true));
