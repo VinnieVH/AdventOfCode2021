@@ -1,4 +1,3 @@
-import assert from "assert";
 import { Binary } from "./Binary";
 import { Frequency } from "./Frequency";
 
