@@ -1,6 +1,6 @@
 import fs from "fs";
 import { PositionChange } from "./PositionChange";
-import { calculatePosition, calculatePositionWithAim, getPositionChangeObject } from "./utils";
+import { calculatePosition, getPositionChangeObject } from "./utils";
 
 const inputs: PositionChange[] = fs
   .readFileSync("./day-2/input.txt", "utf-8")
