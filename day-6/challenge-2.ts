@@ -16,7 +16,7 @@ fishes.forEach((num) => {
   });
 });
 
-for (let i = 1; i <= 256; i++) {
+for (let i = 0; i < 256; i++) {
   buffer = buffer.map((obj) => {
     obj.counter -= 1;
 
